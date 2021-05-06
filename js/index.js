@@ -43,13 +43,17 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 //Start NAV
 
+// 1) document.querySelectorAll access all the "nav a" properties.
+// 2) textContent gives access to the text inside the Nav object and siteConent changes the live document to the specified property. 
+// ** need to refresh on nav a
+
 let navItems = document.querySelectorAll('nav a');
-let nav1 = navItems[0].textContent = (siteContent ["nav"]["nav-item-1"])
-let nav2 = navItems[1].textContent = (siteContent ["nav"]["nav-item-2"])
-let nav3 = navItems[2].textContent = (siteContent ["nav"]["nav-item-3"])
-let nav4 = navItems[3].textContent = (siteContent ["nav"]["nav-item-4"])
-let nav5 = navItems[4].textContent = (siteContent ["nav"]["nav-item-5"])
-let nav6 = navItems[5].textContent = (siteContent ["nav"]["nav-item-6"])
+navItems[0].textContent = (siteContent ["nav"]["nav-item-1"])
+navItems[1].textContent = (siteContent ["nav"]["nav-item-2"])
+navItems[2].textContent = (siteContent ["nav"]["nav-item-3"])
+navItems[3].textContent = (siteContent ["nav"]["nav-item-4"])
+navItems[4].textContent = (siteContent ["nav"]["nav-item-5"])
+navItems[5].textContent = (siteContent ["nav"]["nav-item-6"])
 
 //End NAV 
 
@@ -71,12 +75,51 @@ let ctaHeader = siteContent["cta"]["h1"].split(' ');
 // 4) .join rejoins the substrings that were split in step 1 but includes a break between each word in the string because of <br>.
 document.getElementsByTagName('h1')[0].innerHTML = ctaHeader.join('<br>');
 
-// innerText gets the inner text of an object - in this case it gets the inner text of the first index "button" in the "cta" object, 
+// textContent gets the text of an object - in this case it gets the text of the first index "button" in the "cta" object.   Per Aaron, do not use innerText because it has security issues and could be an interview question. Use textContent instead. 
 
 const button = document.getElementsByTagName('button')[0];
-button.innerText = siteContent ["cta"]["button"];
+button.textContent = siteContent ["cta"]["button"];
 
 //End CTA
 
 //Start main-content
 
+const main = document.querySelector('.main-content');
+const mainItem = main.querySelectorAll('h4');
+mainItem[0].textContent = siteContent['main-content']['features-h4'];
+mainItem[1].textContent = siteContent['main-content']['about-h4'];
+mainItem[2].textContent = siteContent['main-content']['services-h4'];
+mainItem[3].textContent = siteContent['main-content']['product-h4'];
+mainItem[4].textContent = siteContent['main-content']['vision-h4'];
+
+const mainContent = main.querySelectorAll('p');
+mainContent[0].textContent = siteContent['main-content']['features-content'];
+mainContent[1].textContent = siteContent['main-content']['about-content'];
+mainContent[2].textContent = siteContent['main-content']['services-content'];
+mainContent[3].textContent = siteContent['main-content']['product-content'];
+mainContent[4].textContent = siteContent['main-content']['vision-content'];
+
+const mainImg = document.getElementById('middle-img');
+mainImg.src = siteContent["main-content"]["middle-img-src"];
+
+
+//end main-content
+
+//start contact
+
+const contact = document.querySelector('.contact');
+const contactTitle = contact.querySelector('h4');
+const contactContent = contact.querySelectorAll('p');
+contactTitle.textContent = siteContent['contact']['contact-h4'];
+contactContent[0].textContent = siteContent['contact']['address'];
+contactContent[1].textContent = siteContent['contact']['phone'];
+contactContent[2].textContent = siteContent['contact']['email'];
+//end contact
+
+// Footer
+
+const footer = document.querySelector('footer');
+const copyright = footer.querySelector('p');
+copyright.textContent = siteContent['footer']['copyright'];
+
+//end footer
