@@ -47,13 +47,21 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 // 2) textContent gives access to the text inside the Nav object and siteConent changes the live document to the specified property. 
 // ** need to refresh on nav a
 
+/* code below is the long version
+
 let navItems = document.querySelectorAll('nav a');
 navItems[0].textContent = (siteContent ["nav"]["nav-item-1"])
 navItems[1].textContent = (siteContent ["nav"]["nav-item-2"])
 navItems[2].textContent = (siteContent ["nav"]["nav-item-3"])
 navItems[3].textContent = (siteContent ["nav"]["nav-item-4"])
 navItems[4].textContent = (siteContent ["nav"]["nav-item-5"])
-navItems[5].textContent = (siteContent ["nav"]["nav-item-6"])
+navItems[5].textContent = (siteContent ["nav"]["nav-item-6"])*/
+
+
+const navBar = document.querySelectorAll ('nav a');
+navBar.forEach((item, index) => {
+  item.textContent = siteContent.nav[`nav-item-${index + 1}`]
+})
 
 //End NAV 
 
@@ -67,6 +75,7 @@ const ctaImg = document.getElementById('cta-img');
 ctaImg.src = siteContent["cta"]["img-src"];
 
 //siteContent referes the "cta" object and the "h1" property within that object, then splits the string "DOM is Awesome" into the substring "DOM, is, Awesome" 
+
 let ctaHeader = siteContent["cta"]["h1"].split(' ');
 
 // 1) document. is a variable that gives the ability to access the information in the HTML code. 
